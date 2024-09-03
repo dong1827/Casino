@@ -1,0 +1,6 @@
+#Env files
+__pycache__/
+env/
+
+#Config files
+Config.py
