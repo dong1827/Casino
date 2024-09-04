@@ -1,29 +1,34 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 
-//Button for directing to Guessing dice game
+//Components for navigating to Guessing dice game
 function DiceNum() {
+    //Function to navigate to guess-dice page
     const navigate = useNavigate();
     const handleClick = () => {
         navigate("/guess-dice");
     }    
     
+    //Creates an image and button for guess dice game.
     return(
         <div className='centerJustified columnFlex'>
             <img className='images' src='/images/Guessing_Dice.jpg' alt='Guessing Dice'></img>
+            {/*navigates to guess-dice page on click*/}
             <button className='buttons' onClick={handleClick}>Guessing Dice</button>
         </div>
         
     );
 }
 
-//Button for directing to Russian Roulette game
+//Components for navigating to Russian Roulette game
 function RussianRoulette() {
+    //Function to navigate to russian-roulette page
     const navigate = useNavigate();
     const handleClick = () => {
         navigate("/russian-roulette");
     };    
     
+    //Creates an image and button for the game
     return(
         <div className='centerJustified columnFlex'>
             <img className='images' src='/images/Russian_Roulette.jpg' alt='Guessing Dice'></img>
@@ -32,6 +37,7 @@ function RussianRoulette() {
     );
 }
 
+//Components for navigating to Card Race game
 function CardRace() {
     const navigate = useNavigate();
     const handleClick = () => {
@@ -46,6 +52,7 @@ function CardRace() {
     )
 }
 
+//Components for navigating to Black Jack game
 function BlackJack() {
     const navigate = useNavigate();
     const handleClick = () => {
@@ -60,9 +67,10 @@ function BlackJack() {
     )
 }
 
+//The default component for this page
 function Start() {
     return(
-        //Returning buttons for directing to all the avaliable games
+        //Contains every game's navigation component
         <div className='centerJustified'>
             <div className={`rowFlex centerJustified solidBorder`} id='gameBox'>
                 <DiceNum></DiceNum>
