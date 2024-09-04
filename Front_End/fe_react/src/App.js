@@ -12,6 +12,7 @@ import BlackJack from './pages/BlackJack';
 function App() {
 
   return (
+    //Routers to pages
     <Routes>
       <Route path='/' element={<Home />} />
       <Route path='/login' element={<Login />} />

@@ -3,17 +3,23 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 function Login() {
+    /*
+    Sending back the content for Login page
+    args: None 
+    */
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [msg, setMsg] = useState('Welcome to Casino')
     const navigate = useNavigate()
 
-    const handleRegisterClick = () => {
-        navigate('/register')
-    }
-
     const handleSubmit = async (event) => {
+        /*
+        function for handling form submission/login
+        args:
+            event: Event of the form
+        */
         event.preventDefault();
+        //Send username and password to /login to handle the login request
         axios({
             method: "post",
             url: "http://localhost:5000/login",
@@ -36,10 +42,20 @@ function Login() {
         })
     }
 
+    const handleRegisterClick = () => {
+        /*
+        Navigates to the register page
+        args: None
+        */
+        navigate('/register')
+    }
+
     return (
         <div className={`centerJustified halfHeight`}>
+            {/*form for login*/}
             <form id='LRBox' className={`columnFlex solidBorder`} onSubmit={handleSubmit}>
                 <div>
+                    {/*Username input box*/}
                     <input
                         className='inputBox'
                         placeholder='username'
@@ -51,6 +67,7 @@ function Login() {
                     />
                 </div>
                 <div>
+                    {/*Password input box*/}
                     <input
                         className='inputBox'
                         placeholder='password'
@@ -61,6 +78,7 @@ function Login() {
                         required
                     />
                 </div>
+                {/*buttons for submit login request and navigating to register page*/}
                 <div className='centerJustified'>
                     <button className='buttons' type='submit'>Login</button>
                     <button className='buttons' onClick={handleRegisterClick}>Register</button>

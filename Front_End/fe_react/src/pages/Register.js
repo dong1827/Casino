@@ -3,6 +3,10 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 function Register() {
+    /*
+    Sending back the content for Register page
+    args: None 
+    */
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [repPassword, setRepPassword] = useState('');
@@ -10,11 +14,18 @@ function Register() {
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
+        /*
+        function for handling form submission/registering the account
+        args: 
+            event: Event of the form
+        */
         event.preventDefault();
+        //Check if password and the retyped password match
         try {
             if (password !== repPassword){
                 throw new Error('Password do not match')
             };
+            //Send data to /register to handle registeration
             const response = await axios.post('http://localhost:5000/register',  { username, password });
             setMsg(response.data['Msg'])
             console.log(response.data);
@@ -24,12 +35,18 @@ function Register() {
     };
 
     const handleLoginClick = () => {
+        /*
+        Navigates to the login page
+        args: None
+        */
         navigate("/login")
     }
 
     return (
         <div className={`centerJustified halfHeight`}>
+            {/*form for registeration*/}
             <form id='LRBox' className={`columnFlex solidBorder`} onSubmit={handleSubmit}>
+                {/*Username input box*/}
                 <div>
                     <input
                         className='inputBox'
@@ -43,6 +60,7 @@ function Register() {
                 </div>
 
                 <div>
+                    {/*Password input box*/}
                     <input
                         className='inputBox'
                         placeholder='password'
@@ -55,6 +73,7 @@ function Register() {
                 </div>
 
                 <div>
+                    {/*Retype password input box*/}
                     <input
                         className='inputBox'
                         placeholder='repeat password'
@@ -66,6 +85,7 @@ function Register() {
                     />
                 </div>
 
+                {/*Buttons for navigate to login page and submitting register request*/}
                 <div className='centerJustified'>
                     <button className='buttons' type='submit'>Register</button>
                     <button className='buttons' onClick={handleLoginClick}>Login</button>    
